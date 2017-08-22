@@ -1,0 +1,44 @@
+Brief overview of Planning Poker for a distributed team:
+
+Planning Poker Overview:
+Planning Poker is an consensus based scrum estimating and planning technique wherein the team virtually meets and makes a join decision as to the amount of effort it would take to complete a particular user story. 
+ 
+Typically each team member is required to estimate the user story with values ranging from 0, 1, 2, 3, 5, 8, 13, 20, 40 and 100. The values represent the number of story points that represent the amount of effort required to take the user story from start to finish within one Sprint. 
+ 
+It might also make sense to have a ‘?’ card, which a team member can choose if he/she does not have enough subject matter expertise to submit an estimate rather than just guessing a number. 
+
+User stories are introduced sequentially by the facilitator/dealer from the prioritised backlog list. The team members discuss the feature, clarifying the scope and defining criteria for done. After discussion has ended, the team members who has enough knowledge about the user story submit their estimate by choosing a card privately. 
+
+Once facilitator/dealer then confirms that the estimates have been submitted by the team, he/she clicks a button that will reveal all the estimates that the team has submitted. The team members with highest and lowest estimates share their reasons. After further discussion, the team either chooses to re-estimate the card based on the new information that has been shared or they reach a consensus during discussion. 
+
+In some cases the a particular user story might also be deferred if the team members feel that they need additional information. It might also be deferred if the team feels that the user story is quite big or complex and might need to be broken down into smaller pieces to get an accurate estimate. 
+
+Facilitator/Dealer Experience Flow:
+- Facilitator/Dealer will create an account and set up the scrum planning session to team to review user stories and submit estimates.
+- He/She will add User Stories that need estimation from the prioritised backlog. 
+- He/She will send team members the link that will allow them to join the planning poker session. Alternatively it could also be done by sending an email invite to the team members that contain the link or ID that identifies a particular session that is currently in play. 
+- Once the team members join, the Facilitator/Dealer will reveal the first user story. 
+- Each team member including the dealer can add comments or notes to the story as the discussion of the story progresses (this thread of discussion should be emailed to all the participants in the session)
+- Once the discussion is finished, the dealer initiates the process submission of estimates by team members. 
+- The dealer also has the ability to submit an estimate along with other team members. 
+- Even the dealer should not be able to see any of the estimates being submitted until all have sunmitted and the cards are ready to be revealed.
+- When everyone is done submitting then he/she, clicks a button that will reveal all the cards with the team members estimate along with their name. 
+- After the team debates the reasons for highest & lowest estimates, he/she has the option of replaying the game for that particular user story or finalise the story points based on consensus. 
+- The dealer then moves on to the next story which was bucketed for the particular Sprint. 
+- The dealer also has the option of deferring the card either to a next Sprint or to get the estimates done asynchronously if a particular story needs more information before estimates can be provided. 
+- The dealer can choose to stop the game once the approximate number of story points are reached that a team is proven to deliver in past sprint cycles. 
+- Finally the dealer should be able to send out the summary that contains the stories and the final number of story points for each, along with comments and notes that were discussed. 
+
+Team member/Contributor Experience Flow: 
+- Team members can join the Planning poker game by clicking on the link that they have received from the facilitator/dealer without having to login. 
+- Once the team joins the session they can only view the one story that the dealer has chosen to be reviewed. 
+- They will have the ability to comment or add notes to the story to add clarification or extend a certain aspect of the user story that is currently being discussed.
+- Each team member has the option of submitting his/her estimate by choosing a number from the deck of cards (including the ‘?’ card which has no weightage and can be ignored)
+- After the card have been flipped, the team members will be able to see all the estimates that have been submitted by their fellow team members along with their 
+- The team members will also have the ability to revise their estimates as the discussions progress and they have a new understanding of the scope, technical feasibility etc. 
+
+
+
+
+
+
