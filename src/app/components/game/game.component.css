@@ -1,0 +1,142 @@
+#navMain{
+	border-radius:0px;
+}
+#Cont01{
+	background-color:#fff;
+	margin-top:-20px;
+}
+#SBh2{
+	padding-bottom:6px;
+}
+#settingsBtn{
+	float:right; 
+	margin-top:-47px;
+}
+#Sno{
+	width:30%;
+	margin-left:200px;
+	margin-top:-45px;
+	margin-bottom:13px;
+}
+#Box01{
+	background-color:#fff;
+	padding-top:10px;
+	padding-left:20px;
+	padding-right:20px;
+	margin-top:10px;
+}
+#upBtn1{
+	padding-left:30px;
+	padding-right:30px;
+	border-radius:0px;
+	margin-left:585px;
+	margin-top:-60px;
+}
+#upBtn2{
+	padding-left:30px;
+	padding-right:30px;
+	border-radius:0px;
+	margin-top:-60px;
+	margin-left:5px;
+}
+#SwiID{
+	width:97.5%;
+}
+#SD{
+	width:97.5%;
+	margin-top:15px;
+	border-color:#ccc;
+	border-radius:5px;
+	padding:10px;
+}
+#StoryBtn1{
+	border-radius:0px;
+	margin-top:10px;
+	margin-bottom:13px;
+	padding-left:30px;
+	padding-right:30px;
+	background-color:#333;
+	color:#fff;
+}
+#StoryBtn2{
+	border-radius:0px;
+	float:right;
+	margin-right:25px;
+	margin-top:10px;
+	padding-left:30px;
+	padding-right:30px;
+	background-color:#333;
+	color:#fff;	
+}
+#upBtn3{
+	padding-left:30px;
+	padding-right:30px;
+	border-radius:0px;
+	margin-left:250px;
+	margin-top:-60px;
+}
+#upBtn4{
+	padding-left:30px;
+	padding-right:30px;
+	border-radius:0px;
+	margin-top:-60px;
+	margin-left:5px;
+}
+#upBtn5{
+	padding-left:30px;
+	padding-right:30px;
+	border-radius:0px;
+	margin-top:-60px;
+	margin-left:240px;
+  background: -webkit-linear-gradient(-50deg, rgb(43, 140, 128), rgb(64, 168, 78));
+  background: linear-gradient(-50deg, rgb(43, 140, 128), rgb(64, 168, 78));
+	color:#fff;
+	border-radius:50px;
+}
+
+
+#div1, #div2, #div3, #div4, #div5, #div6, #div7, #div8, #div9, 
+#div10, #div11, #div12, #div13, #div14, #div15, #div16, #div17, #div18, #div19, #div20, #div21, #div22, #div23, #div24, #div25{
+	float: left;
+    width: 70px;
+    height: 100px;
+    margin: 10px;
+    border: 1px solid black;
+}
+.BOXdnd01{
+	border: 1px solid #000;
+	height: 300px;	
+	padding-left:30px;
+	margin-left:-5px;
+}
+.BOXdnd02{
+	border: 1px solid #000;
+	height: 300px;	
+	padding-left:30px;
+	margin-left:-5px;
+}
+#pname{
+	padding-top:135px;
+	text-align:center;
+	
+}
+.sideBox1{
+	background-color:#fff;
+	padding-top:10px;
+	padding-left:20px;
+	padding-right:20px;
+	margin-top:10px;
+	height:110px;
+}
+.sideBox2{
+	background-color:#fff;
+	padding-top:10px;
+	padding-left:20px;
+	padding-right:20px;
+	margin-top:10px;
+	height:200px;
+}
+#pb{
+	margin-top:20px;
+	
+}
