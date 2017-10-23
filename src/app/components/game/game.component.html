@@ -1,0 +1,157 @@
+<div class="container-fluid" id="Cont01">
+  <h3 id="SBh2">Scoreboard</h3>
+    <input type="text" class="form-control" id="Sno" placeholder="Enter Release/Sprint no.">
+  <button class="btn btn-default" id="settingsBtn"><span class="glyphicon glyphicon-cog"></span></button>
+  </div>  
+  
+  <div class="container-fluid" id="cont001">
+  <div class="row">
+  <div class="col-sm-9">
+  <div id="Box01">
+  <h4>Story Details</h4>
+  <a href="#" class="btn btn-primary" id="upBtn1" role="button">Get story from OSIO</a>
+  <a href="#" class="btn btn-primary" id="upBtn2" role="button">Add new story</a>
+    <input type="text" class="form-control" id="SwiID" placeholder="Story or Work-item ID">
+    <textarea placeholder="Story Description..." rows="4" cols="50" id="SD"></textarea>
+  <a href="#" class="btn btn-default" id="StoryBtn1" role="button"><< Previous Story</a>
+  <a href="#" class="btn btn-default" id="StoryBtn2" role="button">Next Story >></a>
+  </div>
+  </div>
+  <div class="col-sm-3">
+  <div class="container-fluid">
+  <div class="sideBox1">
+  <h4>Velocity</h4>
+  
+  <div class="progress" id="pb">
+    <div class="progress-bar" role="progressbar" aria-valuenow="70"
+    aria-valuemin="0" aria-valuemax="100" style="width:70%">
+      <span class="sr-only">70% Complete</span>
+    </div>
+  </div>
+  </div>
+  </div>
+  
+  
+  
+  
+  <div class="container-fluid">
+  <div class="sideBox2">
+  
+  
+  <div class="panel-group" id="accordion">
+      <div class="panel panel-default" style="border-radius:0px;">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Story 1 <span style="float:right;"><b>03</b></span></a>
+          </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse">
+          <div class="panel-body">This is Story 1</div>
+        </div>
+      </div>
+      <div class="panel panel-default" style="border-radius:0px;">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Story 2 <span style="float:right;"><b>07</b></span></a>
+          </h4>
+        </div>
+        <div id="collapse2" class="panel-collapse collapse">
+          <div class="panel-body">
+      This is Story 2
+      </div>
+        </div>
+      </div>
+      <div class="panel panel-default" style="border-radius:0px;">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Story 3 <span style="float:right;"><b>02</b></span></a>
+          </h4>
+        </div>
+        <div id="collapse3" class="panel-collapse collapse">
+          <div class="panel-body">
+      This is Story 3
+      </div>
+        </div>
+      </div>
+    </div> 
+  
+  
+  
+  </div>
+  </div>
+  </div>
+  </div> 
+  </div>
+  
+  <div class="container-fluid" id="cont002">
+  <div class="row">
+  <div class="col-sm-9">
+  <div id="Box01">
+  <h4>Active Members/Players</h4>
+  <a href="#" class="btn btn-primary" id="upBtn3" role="button">Flip cards</a>
+  <a href="#" class="btn btn-primary" id="upBtn4" role="button">Resest card</a>
+  <a href="" class="btn btn-Default" id="upBtn5" >Average score : 6</a>
+  
+  <!-- Main Starts here -->
+  <div class="BOXdnd01">
+  <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+  <div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+  <div id="div6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+  <div id="div8" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+  <div id="div10" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+  <div id="div12" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+  <div id="div14" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+  <div id="div16" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+  </div>
+  
+  <div class="BOXdnd02">
+  <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <img src="assets/cards01.png" draggable="true" ondragstart="drag(event)" id="drag1" width="70" height="100">
+  </div>
+  <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <img src="assets/cards02.png" draggable="true" ondragstart="drag(event)" id="drag2" width="70" height="100">
+  </div>
+  <div id="div5" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <img src="assets/cards03.png" draggable="true" ondragstart="drag(event)" id="drag3" width="70" height="100">
+  </div>
+  <div id="div7" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <img src="assets/cards04.png" draggable="true" ondragstart="drag(event)" id="drag4" width="70" height="100">
+  </div>
+  <div id="div9" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <img src="assets/cards05.png" draggable="true" ondragstart="drag(event)" id="drag5" width="70" height="100">
+  </div>
+  <div id="div11" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <img src="assets/cards06.png" draggable="true" ondragstart="drag(event)" id="drag6" width="70" height="100">
+  </div>
+  <div id="div13" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <img src="assets/cards07.png" draggable="true" ondragstart="drag(event)" id="drag7" width="70" height="100">
+  </div>
+  <div id="div15" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <img src="assets/cards08.png" draggable="true" ondragstart="drag(event)" id="drag8" width="70" height="100">
+  </div>
+  <div id="div17" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <img src="assets/cards09.png" draggable="true" ondragstart="drag(event)" id="drag9" width="70" height="100">
+  </div>
+  <div id="div19" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <img src="assets/cards10.png" draggable="true" ondragstart="drag(event)" id="drag10" width="70" height="100">
+  </div>
+  <div id="div21" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <img src="assets/cards11.png" draggable="true" ondragstart="drag(event)" id="drag11" width="70" height="100">
+  </div>
+  <div id="div23" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <img src="assets/cards12.png" draggable="true" ondragstart="drag(event)" id="drag12" width="70" height="100">
+  </div>
+  <div id="div25" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <img src="assets/cards13.png" draggable="true" ondragstart="drag(event)" id="drag13" width="70" height="100">
+  </div>
+  
+  </div>
+  
+  <!-- Main Ends here -->
+  </div>
+  </div>
+  <div class="col-sm-3">
+  
+  
+  </div> 
+  </div>
