@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -22,6 +22,7 @@ import { GameModule } from './components/game/game.module';
     AppRoutingModule,
     BrowserModule,
     GameModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpModule
   ],

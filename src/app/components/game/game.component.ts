@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NavigationEnd, Params, Router } from '@angular/router';
 import { URLSearchParams } from '@angular/http';
 
@@ -6,6 +6,7 @@ import { Player } from '../models/player.model';
 import { getDetails } from '../utils/storage.utils';
 
 import { Card } from '../models/card.model';
+import { UserStory } from '../models/userstory.model'
 
 @Component({
   selector: 'app-game',
@@ -15,6 +16,7 @@ import { Card } from '../models/card.model';
 export class GameComponent implements OnInit {
 
   public player: Player = new Player();
+  public userStoryInfo: UserStory = new UserStory();
   public isOSIOReady = false;
   public emptyCards = true;
 
@@ -23,6 +25,8 @@ export class GameComponent implements OnInit {
 
   public cards: Array<Card> = [];
   private values: Array<number> = [];
+
+  @ViewChild('userStoryModal') userStoryModal: any;
 
   constructor(
     private router: Router,
@@ -81,5 +85,9 @@ export class GameComponent implements OnInit {
         this.initialize();
       }
     });
+  }
+
+  addNewUserStory() {
+    this.userStoryModal.open();
   }
 }
