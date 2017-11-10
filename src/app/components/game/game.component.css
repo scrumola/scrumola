@@ -111,9 +111,9 @@
 }
 .BOXdnd02{
 	border: 1px solid #000;
-	height: 300px;	
-	padding-left:30px;
-	margin-left:-5px;
+	text-align: center;
+	padding: 10px;	
+	margin-bottom: 20px;
 }
 #pname{
 	padding-top:135px;
