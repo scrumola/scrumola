@@ -9,8 +9,8 @@
   <div class="col-sm-9">
   <div id="Box01">
   <h4>Story Details</h4>
-  <a href="#" class="btn btn-primary" id="upBtn1" role="button">Get story from OSIO</a>
-  <a href="#" class="btn btn-primary" id="upBtn2" role="button">Add new story</a>
+  <a href="#" *ngIf="isOSIOReady" class="btn btn-primary" id="upBtn1" role="button">Get story from OSIO</a>
+  <a href="#" class="btn btn-primary" id="upBtn1" role="button">Add new story</a>
     <input type="text" class="form-control" id="SwiID" placeholder="Story or Work-item ID">
     <textarea placeholder="Story Description..." rows="4" cols="50" id="SD"></textarea>
   <a href="#" class="btn btn-default" id="StoryBtn1" role="button"><< Previous Story</a>
