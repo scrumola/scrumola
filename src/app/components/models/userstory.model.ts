@@ -1,4 +1,7 @@
 export class UserStory {
     storyDetail: string;
-    storyDesp: string;
+    storyDesc: string;
+    isEstimated: boolean;
+    estimates?: Array<any>;
+    acceptedEstimate?: string;
 }

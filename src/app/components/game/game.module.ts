@@ -5,6 +5,7 @@ import { ModalModule } from 'ngx-modal';
 import { GameComponent } from './game.component';
 
 import { CardModule } from '../card/card.module';
+import { StorySnippetModule } from '../story-snippet/story-snippet.module';
 
 @NgModule({
     imports: [
@@ -12,7 +13,8 @@ import { CardModule } from '../card/card.module';
         FormsModule, 
         ReactiveFormsModule,
         CardModule,
-        ModalModule
+        ModalModule,
+        StorySnippetModule
     ],
     declarations: [
         GameComponent
