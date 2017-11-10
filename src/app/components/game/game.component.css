@@ -25,12 +25,11 @@
 	padding-right:20px;
 	margin-top:10px;
 }
-#upBtn1{
+.upBtn1{
 	padding-left:30px;
 	padding-right:30px;
 	border-radius:0px;
-	margin-left:585px;
-	margin-top:-60px;
+	margin: 2px;
 }
 #upBtn2{
 	padding-left:30px;
@@ -39,11 +38,11 @@
 	margin-top:-60px;
 	margin-left:5px;
 }
-#SwiID{
-	width:97.5%;
+.SwiID{
+	width:100%;
 }
-#SD{
-	width:97.5%;
+.SD{
+	width:100%;
 	margin-top:15px;
 	border-color:#ccc;
 	border-radius:5px;
