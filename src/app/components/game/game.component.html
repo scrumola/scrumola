@@ -14,7 +14,7 @@
           </div>
           <div class="col-md-6">
             <button type="button" *ngIf="isOSIOReady" class="btn btn-primary pull-right upBtn1">Get story from OSIO</button>
-            <button type="button" class="btn btn-primary pull-right upBtn1" (click)="addNewUserStory()">Add new story</button>
+            <button type="button" *ngIf="isCreator" class="btn btn-primary pull-right upBtn1" (click)="addNewUserStory()">Add new story</button>
           </div>
         </div>
         <input type="text" class="form-control SwiID" [readonly]="true" placeholder="Story or Work-item ID" [(ngModel)]="userStoryInfo.storyDetail">
@@ -93,8 +93,8 @@
     <div class="col-sm-9">
       <div id="Box01">
         <h4>Active Members/Players</h4>
-        <a href="#" class="btn btn-primary" id="upBtn3" role="button">Flip cards</a>
-        <a href="#" class="btn btn-primary" id="upBtn4" role="button">Resest card</a>
+        <button type="button" *ngIf="isCreator" class="btn btn-primary" id="upBtn3" role="button">Flip cards</button>
+        <button type="button" *ngIf="isCreator" class="btn btn-primary" id="upBtn4" role="button">Resest card</button>
         <a href="" class="btn btn-Default" id="upBtn5">Average score : 6</a>
 
         <!-- Main Starts here -->
