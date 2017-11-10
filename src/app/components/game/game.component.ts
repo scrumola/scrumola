@@ -19,6 +19,7 @@ export class GameComponent implements OnInit {
   public userStoryInfo: UserStory = new UserStory();
   public isOSIOReady = false;
   public emptyCards = true;
+  public isCreator = false;
 
   private questionMarkColor = '#5e4a87';
   private passColor = '#5e5e5e';
@@ -69,6 +70,12 @@ export class GameComponent implements OnInit {
       color: this.passColor,
       status: 'show'
     });
+
+    if(this.player.playerType == '0'){
+      this.isCreator = true;
+    } else {
+      this.isCreator = false;
+    }
   }
 
   ngOnInit() {
