@@ -91,26 +91,41 @@
 <div class="container-fluid" id="cont002">
   <div class="row">
     <div class="col-sm-9">
-      <div id="Box01">
-        <h4>Active Members/Players</h4>
-        <button (click)="flipEstimates()" type="button" *ngIf="isCreator" class="btn btn-primary" id="upBtn3" role="button">Flip cards</button>
-        <button type="button" *ngIf="isCreator" class="btn btn-primary" id="upBtn4" role="button">Resest card</button>
-        <a href="" class="btn btn-Default" id="upBtn5">Average score : 6</a>
+      <div *ngIf="storySelected">
+        <div *ngIf="!alreadyEstimated" id="Box01">
+          <h4>Active Members/Players</h4>
+          <button (click)="flipEstimates()" type="button" *ngIf="isCreator" class="btn btn-primary" id="upBtn3" role="button">Flip cards</button>
+          <a href="" class="btn btn-Default" id="upBtn5">Average score : 6</a>
 
-        <!-- Main Starts here -->
-        <div *ngIf="!emptyCards" class="BOXdnd01">
-          <card [card]="card.card" *ngFor="let card of estimatedCards"></card>
+          <!-- Main Starts here -->
+          <div *ngIf="!emptyCards" class="BOXdnd01">
+            <card [card]="card.card" *ngFor="let card of estimatedCards"></card>
+          </div>
+
+          <div *ngIf="emptyCards" class="BOXdnd01">
+            Players' estimated cards appear here!
+          </div>
+
+          <div class="BOXdnd02">
+            <card (click)="handleCardClick(card)" [card]="card" *ngFor="let card of cards"></card>
+          </div>
+
+          <!-- Main Ends here -->
+        </div>
+        <div *ngIf="alreadyEstimated">
+          This user story has already been estimated and the outcome is ??.
+        </div>
+      </div>
+      <div *ngIf="!storySelected">
+        
+        <div *ngIf="(!stories || stories.length === 0) && isCreator">
+          Please add a user story to start. 
+          <button type="button" *ngIf="isCreator" class="btn btn-primary pull-right upBtn1" (click)="addNewUserStory()">Add new story</button>
         </div>
 
-        <div *ngIf="emptyCards" class="BOXdnd01">
-          Players' estimated cards appear here!
+        <div *ngIf="stories && stories.length > 0">
+          <story-snippet (click)="selectedStory(story)" [storySnippet]="story && story" *ngFor="let story of stories"></story-snippet>
         </div>
-
-        <div class="BOXdnd02">
-          <card (click)="handleCardClick(card)" [card]="card" *ngFor="let card of cards"></card>
-        </div>
-
-        <!-- Main Ends here -->
       </div>
     </div>
     <div class="col-sm-3">
@@ -131,6 +146,6 @@
       <textarea class="SD" placeholder="Story Description..." rows="4" cols="50" [(ngModel)]="userStoryInfo.storyDesp"></textarea>
     </modal-content>
     <modal-footer>
-       <button type="button" class="btn btn-primary" role="button">Submit</button>
+       <button type="button" class="btn btn-primary" (click)="userStorySubmit()" role="button">Submit</button>
     </modal-footer>
 </modal>

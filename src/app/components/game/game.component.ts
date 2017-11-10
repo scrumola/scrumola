@@ -21,12 +21,16 @@ export class GameComponent implements OnInit {
   public emptyCards = true;
   public isCreator = false;
 
+  public alreadyEstimated = false;
+  public storySelected: UserStory = null;
+
   public estimatedCards: Array<Card> = [];
 
   private questionMarkColor = '#5e4a87';
   private passColor = '#5e5e5e';
 
   public cards: Array<Card> = [];
+  public stories: Array<UserStory> = [];
   private values: Array<number> = [];
 
 
@@ -65,13 +69,30 @@ export class GameComponent implements OnInit {
   //   }
   // }
 
-  private getExistingEstimations(): Array<any> {
-    const estimation: any = getDetails('estimation');
+  private parseExisting(key: string): Array<any> {
+    const existing: any = getDetails(key);
     let results: any = [];
-    if (estimation) {
-      results = JSON.parse(estimation);
+    if (existing) {
+      results = JSON.parse(existing);
     }
     return results;
+  }
+
+  private getExistingEstimations(): Array<any> {
+    let overall: Array<any> = this.parseExisting(this.player.gameName);
+    let estimates: Array<any> = [];
+    if (overall && overall.length > 0) {
+      overall.forEach((story) => {
+        if (story.storyDetail === this.storySelected.storyDetail) {
+          estimates = story.estimates;
+        }
+      });
+    }
+    return estimates;
+  }
+
+  private getExistingStories(): Array<any> {
+    return this.parseExisting(this.player.gameName);
   }
 
   private lookForEstimations(): void {
@@ -84,7 +105,12 @@ export class GameComponent implements OnInit {
     }, 2000);
   }
 
+  private lookForStories(): void {
+    this.stories = this.getExistingStories();
+  }
+
   private initialize(): void {
+    this.lookForStories();
     this.fibonacci(10);
     for (let i = 0; i < 10; ++ i) {
       this.cards.push({
@@ -103,8 +129,6 @@ export class GameComponent implements OnInit {
       color: this.passColor,
       status: 'show'
     });
-
-    this.lookForEstimations();
 
     if (this.player.playerType === '0') {
       this.isCreator = true;
@@ -129,7 +153,40 @@ export class GameComponent implements OnInit {
   }
 
   addNewUserStory() {
+    this.userStoryInfo = new UserStory();
     this.userStoryModal.open();
+  }
+
+  public closeModal(): void {
+    this.userStoryModal.close();
+  }
+
+  public selectedStory(story: UserStory): void {
+    this.storySelected = story;
+    this.userStoryInfo = story;
+    this.lookForEstimations();
+  }
+
+  public userStorySubmit(): void {
+    let stories = this.getExistingStories() || [];
+    this.userStoryInfo.isEstimated = false;
+    stories.push(this.userStoryInfo);
+    storeDetails(this.player.gameName, JSON.stringify(stories));
+    this.lookForStories();
+    this.closeModal();
+  }
+
+  private submitEstimates(estimations: Array<any>): void {
+    let stories: Array<UserStory> = this.getExistingStories();
+    if (stories && stories.length > 0) {
+      let len = stories.length;
+      for (let i = 0; i < len; ++ i) {
+        if (stories[i].storyDetail === this.userStoryInfo.storyDetail) {
+          stories[i].estimates = estimations;
+        }
+      }
+    }
+    storeDetails(this.player.gameName, JSON.stringify(stories));
   }
 
   public flipEstimates(): void {
@@ -140,7 +197,7 @@ export class GameComponent implements OnInit {
       status = status === 'show' ? 'hide' : 'show';
       estimations[i].card.status = status;
     }
-    storeDetails('estimation', JSON.stringify(estimations));
+    this.submitEstimates(estimations);
   }
 
   public handleCardClick(card: Card): void {
@@ -154,7 +211,7 @@ export class GameComponent implements OnInit {
           "playerName": this.player.nickName
         }
       };
-      let existingEstimations: any = this.estimatedCards = this.getExistingEstimations();
+      let existingEstimations: any = this.getExistingEstimations() || [];
       let len = existingEstimations.length;
       let flag = false;
       for (let i = 0; i < len; ++ i) {
@@ -168,7 +225,9 @@ export class GameComponent implements OnInit {
         existingEstimations.push(estimation);
       }
 
-      storeDetails('estimation', JSON.stringify(existingEstimations));
+      this.userStoryInfo.estimates = existingEstimations;
+
+      this.submitEstimates(existingEstimations);
     }
   }
 }
