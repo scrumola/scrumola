@@ -93,20 +93,13 @@
     <div class="col-sm-9">
       <div id="Box01">
         <h4>Active Members/Players</h4>
-        <button type="button" *ngIf="isCreator" class="btn btn-primary" id="upBtn3" role="button">Flip cards</button>
+        <button (click)="flipEstimates()" type="button" *ngIf="isCreator" class="btn btn-primary" id="upBtn3" role="button">Flip cards</button>
         <button type="button" *ngIf="isCreator" class="btn btn-primary" id="upBtn4" role="button">Resest card</button>
         <a href="" class="btn btn-Default" id="upBtn5">Average score : 6</a>
 
         <!-- Main Starts here -->
         <div *ngIf="!emptyCards" class="BOXdnd01">
-          <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-          <div id="div4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-          <div id="div6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-          <div id="div8" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-          <div id="div10" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-          <div id="div12" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-          <div id="div14" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-          <div id="div16" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+          <card [card]="card.card" *ngFor="let card of estimatedCards"></card>
         </div>
 
         <div *ngIf="emptyCards" class="BOXdnd01">
@@ -114,7 +107,7 @@
         </div>
 
         <div class="BOXdnd02">
-          <card [card]="card" *ngFor="let card of cards"></card>
+          <card (click)="handleCardClick(card)" [card]="card" *ngFor="let card of cards"></card>
         </div>
 
         <!-- Main Ends here -->

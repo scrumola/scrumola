@@ -1,1 +1,4 @@
-<div class="estimation-card" [ngStyle]="{'background-color': card && card.color}" [innerHTML]="card && card.value"></div>
+<div class="estimation-container">
+    <div class="estimation-card" [ngClass]="{'hidden-card': card.status === 'hide', 'visible-card': card.status === 'show'}" [ngStyle]="{'background-color': card && card.color}" [innerHTML]="card && card.status === 'show' ? card.value : ''"></div>
+    <div class="player-name" [innerHTML]="card && card.playerName"></div>
+</div>
