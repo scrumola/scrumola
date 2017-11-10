@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+// import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-game',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(
+    // private router: Router,
+    ) {
   }
 
+
+  ngOnInit() {
+  //  console.log(this.router);
+  }
 }
