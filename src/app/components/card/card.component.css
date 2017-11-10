@@ -1,0 +1,11 @@
+.estimation-card {
+    display: inline-block;
+    width: 100px;
+    height: 146px;
+    text-align: center;
+    font-size: 45px;
+    vertical-align: middle;
+    line-height: 146px;
+    color: #fff;
+    margin: 5px;
+}

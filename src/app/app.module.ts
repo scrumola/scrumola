@@ -10,18 +10,18 @@ import { HeaderComponent } from './components/header/header.component';
 
 // Login
 import { LoginComponent } from './components/login/login.component';
-import { GameComponent } from './components/game/game.component';
+import { GameModule } from './components/game/game.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    LoginComponent,
-    GameComponent
+    LoginComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
+    GameModule,
     ReactiveFormsModule,
     HttpModule
   ],
