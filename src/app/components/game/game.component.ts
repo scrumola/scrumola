@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
 import { NavigationEnd, Params, Router } from '@angular/router';
 import { URLSearchParams } from '@angular/http';
 
@@ -15,13 +15,17 @@ import { UserStory } from '../models/userstory.model'
 })
 export class GameComponent implements OnInit {
 
+  public onLogin = new EventEmitter();
+
   public player: Player = new Player();
   public userStoryInfo: UserStory = new UserStory();
+  public userStoryEntry: UserStory = new UserStory();
   public isOSIOReady = false;
   public emptyCards = true;
   public isCreator = false;
 
   public alreadyEstimated = false;
+  public estimatedValue = '';
   public storySelected: UserStory = null;
 
   public estimatedCards: Array<Card> = [];
@@ -78,6 +82,19 @@ export class GameComponent implements OnInit {
     return results;
   }
 
+  public finalizeEstimates(estimate: any): void {
+    if (estimate) {
+      if (this.player.playerType === '0' && estimate.card && estimate.card.status === 'show') {
+        debugger;
+        this.userStoryInfo.acceptedEstimate = estimate.card.value;
+        this.userStoryInfo.isEstimated = true;
+        this.storeStories(this.userStoryInfo, true);
+        this.alreadyEstimated = true;
+        this.estimatedValue = this.userStoryInfo.acceptedEstimate;
+      }
+    }
+  }
+
   private getExistingEstimations(): Array<any> {
     let overall: Array<any> = this.parseExisting(this.player.gameName);
     let estimates: Array<any> = [];
@@ -107,6 +124,120 @@ export class GameComponent implements OnInit {
 
   private lookForStories(): void {
     this.stories = this.getExistingStories();
+  }
+
+  addNewUserStory() {
+    this.userStoryEntry = new UserStory();
+    this.userStoryModal.open();
+  }
+
+  public closeModal(): void {
+    this.userStoryModal.close();
+  }
+
+  private resetStory(): void {
+    this.estimatedCards = [];
+    this.alreadyEstimated = false;
+    this.estimatedValue = null;
+    this.emptyCards = true;
+  }
+
+  public selectedStory(story: UserStory): void {
+    this.storySelected = story;
+    this.userStoryInfo = story;
+    this.resetStory();
+    if (this.storySelected.isEstimated) {
+      this.alreadyEstimated = true;
+      this.estimatedValue = this.storySelected.acceptedEstimate;
+    }
+    this.lookForEstimations();
+  }
+
+  public storeStories(userStory: UserStory, amend?: boolean): void {
+    debugger;
+    let stories = this.getExistingStories() || [];
+    if (stories) {
+      if (amend) {
+        let len = stories.length;
+        for (let i = 0; i < len; ++ i) {
+          if (stories[i].storyDetail === userStory.storyDetail) {
+            stories[i].isEstimated = userStory.isEstimated;
+            stories[i].acceptedEstimate = userStory.acceptedEstimate;
+          }
+        }
+      }
+      else {
+        stories.push(userStory);
+      }
+      storeDetails(this.player.gameName, JSON.stringify(stories));
+      this.lookForStories();
+    }
+  }
+
+  public userStorySubmit(): void {
+    debugger;
+    if (this.userStoryEntry && this.userStoryEntry.hasOwnProperty('storyDetail')) {
+      this.userStoryEntry.isEstimated = false;
+      this.storeStories(this.userStoryEntry);
+      this.closeModal();
+    }
+  }
+
+  private submitEstimates(estimations: Array<any>): void {
+    let stories: Array<UserStory> = this.getExistingStories();
+    if (stories && stories.length > 0) {
+      let len = stories.length;
+      for (let i = 0; i < len; ++ i) {
+        if (stories[i].storyDetail === this.userStoryInfo.storyDetail) {
+          stories[i].estimates = estimations;
+        }
+      }
+    }
+    storeDetails(this.player.gameName, JSON.stringify(stories));
+  }
+
+  public flipEstimates(): void {
+    let estimations = this.getExistingEstimations();
+    if (estimations && estimations.length > 0) {
+      let len = estimations.length;
+      for (let i = 0; i < len; ++ i) {
+        let status: string = estimations[i].card.status;
+        status = status === 'show' ? 'hide' : 'show';
+        estimations[i].card.status = status;
+      }
+      this.submitEstimates(estimations);
+    }
+  }
+
+  public handleCardClick(card: Card): void {
+    if (this.player.playerType === '1') {
+      const estimation: any = {
+        "name": this.player.nickName,
+        "card": {
+          "value": card.value,
+          "color": card.color,
+          "status": 'hide',
+          "playerName": this.player.nickName
+        }
+      };
+      let existingEstimations: any = this.getExistingEstimations() || [];
+      let len = existingEstimations.length;
+      let flag = false;
+      for (let i = 0; i < len; ++ i) {
+        if (existingEstimations[i].name === this.player.nickName) {
+          existingEstimations[i] = estimation;
+          flag = true;
+          break;
+        }
+      }
+      if (!flag) {
+        existingEstimations.push(estimation);
+      }
+
+      this.userStoryInfo.estimates = existingEstimations;
+
+      this.submitEstimates(existingEstimations);
+    }
   }
 
   private initialize(): void {
@@ -146,88 +277,10 @@ export class GameComponent implements OnInit {
         this.player.nickName = paramsMap.get('nickName')[0];
         this.player.playerType = paramsMap.get('playerType')[0];
         this.player.gameName = paramsMap.get('gameName')[0];
-
+        this.onLogin.next(this.player);
         this.initialize();
       }
     });
   }
 
-  addNewUserStory() {
-    this.userStoryInfo = new UserStory();
-    this.userStoryModal.open();
-  }
-
-  public closeModal(): void {
-    this.userStoryModal.close();
-  }
-
-  public selectedStory(story: UserStory): void {
-    this.storySelected = story;
-    this.userStoryInfo = story;
-    this.lookForEstimations();
-  }
-
-  public userStorySubmit(): void {
-    let stories = this.getExistingStories() || [];
-    this.userStoryInfo.isEstimated = false;
-    stories.push(this.userStoryInfo);
-    storeDetails(this.player.gameName, JSON.stringify(stories));
-    this.lookForStories();
-    this.closeModal();
-  }
-
-  private submitEstimates(estimations: Array<any>): void {
-    let stories: Array<UserStory> = this.getExistingStories();
-    if (stories && stories.length > 0) {
-      let len = stories.length;
-      for (let i = 0; i < len; ++ i) {
-        if (stories[i].storyDetail === this.userStoryInfo.storyDetail) {
-          stories[i].estimates = estimations;
-        }
-      }
-    }
-    storeDetails(this.player.gameName, JSON.stringify(stories));
-  }
-
-  public flipEstimates(): void {
-    let estimations = this.getExistingEstimations();
-    let len = estimations.length;
-    for (let i = 0; i < len; ++ i) {
-      let status: string = estimations[i].card.status;
-      status = status === 'show' ? 'hide' : 'show';
-      estimations[i].card.status = status;
-    }
-    this.submitEstimates(estimations);
-  }
-
-  public handleCardClick(card: Card): void {
-    if (this.player.playerType === '1') {
-      const estimation: any = {
-        "name": this.player.nickName,
-        "card": {
-          "value": card.value,
-          "color": card.color,
-          "status": 'hide',
-          "playerName": this.player.nickName
-        }
-      };
-      let existingEstimations: any = this.getExistingEstimations() || [];
-      let len = existingEstimations.length;
-      let flag = false;
-      for (let i = 0; i < len; ++ i) {
-        if (existingEstimations[i].name === this.player.nickName) {
-          existingEstimations[i] = estimation;
-          flag = true;
-          break;
-        }
-      }
-      if (!flag) {
-        existingEstimations.push(estimation);
-      }
-
-      this.userStoryInfo.estimates = existingEstimations;
-
-      this.submitEstimates(existingEstimations);
-    }
-  }
 }
