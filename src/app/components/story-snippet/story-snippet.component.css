@@ -4,3 +4,7 @@
     background: #ededed;
     cursor: pointer;
 }
+.selected {
+    background: #222;
+    color: #fff;
+}
