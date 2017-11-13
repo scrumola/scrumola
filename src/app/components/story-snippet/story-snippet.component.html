@@ -1,5 +1,5 @@
 <div class="story-snippet-container">
-    <div class="story-snippet-card">
+    <div [ngClass]="{'story-snippet-card': true, 'selected': selected}" ngClass>
         {{storySnippet && storySnippet.storyDetail}}
     </div>
 </div>

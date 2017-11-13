@@ -26,37 +26,8 @@
           </section><button type="button" *ngIf="isOSIOReady" class="btn btn-default" id="StoryBtn1" role="button"><< Previous Story</button>
           <button type="button" *ngIf="isOSIOReady" class="btn btn-default" id="StoryBtn2" role="button">Next Story >></button>
         </div>
-      </div>
-      <div class="col-sm-3">
-        <!--<div class="">
-          <div class="sideBox1">
-            <h4>Velocity</h4>
 
-            <div class="progress" id="pb">
-              <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
-                <span class="sr-only">70% Complete</span>
-              </div>
-            </div>
-          </div>
-        </div>-->
-
-
-
-
-        <div class="">
-          <div class="sideBox2">
-            <div *ngIf="stories && stories.length > 0">
-              <story-snippet (click)="selectedStory(story)" [storySnippet]="story && story" *ngFor="let story of stories"></story-snippet>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="" id="cont002">
-    <div class="row">
-      <div class="col-sm-9">
+        <!-- Cards Section -->
         <div *ngIf="storySelected">
           <div *ngIf="!alreadyEstimated" id="Box01">
             <h4>Active Members/Players</h4>
@@ -82,20 +53,39 @@
           </div>
         </div>
         <div *ngIf="!storySelected">
-
           <div *ngIf="(!stories || stories.length === 0) && isCreator" class="empty-cards">
             Please add a user story to start.
             <!--<button type="button" *ngIf="isCreator" class="btn btn-primary pull-right upBtn1" (click)="addNewUserStory()">Add new story</button>-->
           </div>
-
           <div *ngIf="stories && stories.length > 0">
             <story-snippet (click)="selectedStory(story)" [storySnippet]="story && story" *ngFor="let story of stories"></story-snippet>
           </div>
         </div>
+        <!-- Cards Section -->
       </div>
       <div class="col-sm-3">
+        <!--<div class="">
+          <div class="sideBox1">
+            <h4>Velocity</h4>
+
+            <div class="progress" id="pb">
+              <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                <span class="sr-only">70% Complete</span>
+              </div>
+            </div>
+          </div>
+        </div>-->
 
 
+
+
+        <div class="">
+          <div class="sideBox2">
+            <div *ngIf="stories && stories.length > 0 && storySelected">
+              <story-snippet (click)="selectedStory(story)" [selected]="story.storyDetail === storySelected.storyDetail" [storySnippet]="story && story" *ngFor="let story of stories"></story-snippet>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

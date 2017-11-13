@@ -8,4 +8,5 @@ import { Input, Component } from '@angular/core';
 
 export class StorySnippetComponent {
     @Input() storySnippet;
+    @Input() selected?;
 }
