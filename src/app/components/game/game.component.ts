@@ -85,7 +85,7 @@ export class GameComponent implements OnInit {
   public finalizeEstimates(estimate: any): void {
     if (estimate) {
       if (this.player.playerType === '0' && estimate.card && estimate.card.status === 'show') {
-        debugger;
+        
         this.userStoryInfo.acceptedEstimate = estimate.card.value;
         this.userStoryInfo.isEstimated = true;
         this.storeStories(this.userStoryInfo, true);
@@ -115,6 +115,7 @@ export class GameComponent implements OnInit {
   private lookForEstimations(): void {
     window.setInterval(() => {
       this.estimatedCards = this.getExistingEstimations();
+      this.lookForStories();
       this.emptyCards = true;
       if (this.estimatedCards && this.estimatedCards.length > 0) {
         this.emptyCards = false;
@@ -124,6 +125,21 @@ export class GameComponent implements OnInit {
 
   private lookForStories(): void {
     this.stories = this.getExistingStories();
+    this.checkCurrentStory();
+  }
+
+  private checkCurrentStory(): void {
+    if (this.storySelected) {
+      if (this.stories && this.stories.length > 0) {
+        this.stories.forEach((story) => {
+          if (story.storyDetail === this.storySelected.storyDetail) {
+            this.storySelected = story;
+            this.alreadyEstimated = this.storySelected.isEstimated;
+            this.estimatedValue = this.storySelected.acceptedEstimate ? this.storySelected.acceptedEstimate : null;
+          }
+        });
+      }
+    }
   }
 
   addNewUserStory() {
@@ -154,7 +170,7 @@ export class GameComponent implements OnInit {
   }
 
   public storeStories(userStory: UserStory, amend?: boolean): void {
-    debugger;
+    
     let stories = this.getExistingStories() || [];
     if (stories) {
       if (amend) {
@@ -175,7 +191,7 @@ export class GameComponent implements OnInit {
   }
 
   public userStorySubmit(): void {
-    debugger;
+    
     if (this.userStoryEntry && this.userStoryEntry.hasOwnProperty('storyDetail')) {
       this.userStoryEntry.isEstimated = false;
       this.storeStories(this.userStoryEntry);
@@ -241,7 +257,9 @@ export class GameComponent implements OnInit {
   }
 
   private initialize(): void {
-    this.lookForStories();
+    window.setInterval(() => {
+      this.lookForStories();
+    }, 2000);
     this.fibonacci(10);
     for (let i = 0; i < 10; ++ i) {
       this.cards.push({
