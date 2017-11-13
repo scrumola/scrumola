@@ -28,7 +28,7 @@
         </div>
       </div>
       <div class="col-sm-3">
-        <div class="">
+        <!--<div class="">
           <div class="sideBox1">
             <h4>Velocity</h4>
 
@@ -38,7 +38,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div>-->
 
 
 
@@ -78,14 +78,14 @@
             <!-- Main Ends here -->
           </div>
           <div *ngIf="alreadyEstimated">
-            <div class="col-xs-12 already-estimated story-desc">This user story is already estimated</div>
+            <div class="col-xs-12 already-estimated story-desc"><u>This user story is estimated</u></div>
           </div>
         </div>
         <div *ngIf="!storySelected">
 
-          <div *ngIf="(!stories || stories.length === 0) && isCreator">
+          <div *ngIf="(!stories || stories.length === 0) && isCreator" class="empty-cards">
             Please add a user story to start.
-            <button type="button" *ngIf="isCreator" class="btn btn-primary pull-right upBtn1" (click)="addNewUserStory()">Add new story</button>
+            <!--<button type="button" *ngIf="isCreator" class="btn btn-primary pull-right upBtn1" (click)="addNewUserStory()">Add new story</button>-->
           </div>
 
           <div *ngIf="stories && stories.length > 0">
