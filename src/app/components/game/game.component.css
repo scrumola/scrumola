@@ -124,4 +124,16 @@
 	font-weight: 200;
 }
 
+.handle-card-hover {
+	cursor: pointer;
+}
+
+.inline-block {
+	display: inline-block;
+}
+
+.handle-card-hover:hover {
+	transform: scale(1.3);
+}
+
 
