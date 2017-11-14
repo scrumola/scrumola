@@ -283,7 +283,7 @@ export class GameComponent implements OnInit {
     for (let i = 0; i < 10; ++ i) {
       this.cards.push({
         value: this.values[i].toString(),
-        color: (this.values[i] < 10 ? '#0466d2' : '#149c37'),
+        color: (this.values[i] < 10 ? '#337ab7' : '#149c37'),
         status: 'show'
       });
     }
