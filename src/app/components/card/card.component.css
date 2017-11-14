@@ -31,3 +31,7 @@
     #8c8c8e 20px
     );
 }
+
+.current-card {
+    transform: scale(1.3);
+}

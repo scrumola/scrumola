@@ -35,7 +35,7 @@
 
             <!-- Main Starts here -->
             <div *ngIf="!emptyCards" class="estimated-cards">
-              <card (click)="finalizeEstimates(card)" [card]="card.card" *ngFor="let card of estimatedCards"></card>
+              <card class="inline-block" (click)="finalizeEstimates(card)" [ngStyle]="{'cursor': player.playerType === '0' ? 'pointer' : 'auto'}" [card]="card.card" *ngFor="let card of estimatedCards"></card>
             </div>
 
             <div *ngIf="emptyCards" class="empty-cards">
@@ -43,7 +43,7 @@
             </div>
 
             <div class="BOXdnd02">
-              <card (click)="handleCardClick(card)" [card]="card" *ngFor="let card of cards"></card>
+              <card #c (click)="handleCardClick(card)" [ngClass]="{'inline-block handle-card-hover': player.playerType === '1'}" [selected]="isSelected(card)" [card]="card" *ngFor="let card of cards"></card>
             </div>
 
             <!-- Main Ends here -->

@@ -37,6 +37,8 @@ export class GameComponent implements OnInit {
   public stories: Array<UserStory> = [];
   private values: Array<number> = [];
 
+  private TIMER = 2000;
+
 
   @ViewChild('userStoryModal') userStoryModal: any;
 
@@ -120,7 +122,7 @@ export class GameComponent implements OnInit {
       if (this.estimatedCards && this.estimatedCards.length > 0) {
         this.emptyCards = false;
       }
-    }, 2000);
+    }, this.TIMER);
   }
 
   private lookForStories(): void {
@@ -256,10 +258,27 @@ export class GameComponent implements OnInit {
     }
   }
 
+  public isSelected(card: Card): any {
+    if (card) {
+      const estimations = this.getExistingEstimations();
+      if (estimations && estimations.length > 0) {
+        const len = estimations.length;
+        let value = '';
+        for (let i = 0; i < len; ++ i) {
+          value = estimations[i].card.value;
+          if (this.player.nickName === estimations[i].name) {
+            return card.value === value;
+          }
+        }
+      }
+    }
+    return false;
+  }
+
   private initialize(): void {
     window.setInterval(() => {
       this.lookForStories();
-    }, 2000);
+    }, this.TIMER);
     this.fibonacci(10);
     for (let i = 0; i < 10; ++ i) {
       this.cards.push({
