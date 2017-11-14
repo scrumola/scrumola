@@ -43,9 +43,12 @@
   "angular-cli": {},
   "scripts": {
     "ng": "ng",
+    "build:docker": "npm run build:prod && docker build --rm -t `echo $npm_config_tag;` .",
+    "build:prod": "ng build --prod",
     "start": "ng serve",
     "test": "ng test",
     "pree2e": "webdriver-manager update --standalone false --gecko false",
+    "push:docker": "docker push `echo $npm_config_tag`",
     "e2e": "protractor"
   },
   "dependencies": {
