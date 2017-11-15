@@ -1,8 +1,13 @@
 .story-snippet-card {
-    margin: 10px;
-    padding: 5px;
-    background: #ededed;
+    padding: 20px;
+    /*background: #ededed;*/
+    border-bottom: 1px solid #ccc;
     cursor: pointer;
+    overflow-x: hidden;
+    width: 100%;
+    word-wrap: break-word;
+    word-spacing: nowrap;
+    text-overflow: ellipsis;
 }
 .selected {
     background: #222;

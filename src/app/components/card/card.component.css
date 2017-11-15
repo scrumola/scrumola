@@ -20,6 +20,8 @@
 
 .visible-card {
     color: #fff;
+    box-shadow: 6px 6px 8px 1px #999;
+
 }
 
 .hidden-card {
@@ -33,5 +35,5 @@
 }
 
 .current-card {
-    transform: scale(1.3);
+    transform: scale(1.1);
 }
