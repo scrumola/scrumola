@@ -51,3 +51,34 @@
 	padding-top:20px;
 	padding-right:30px;
 }
+
+.cover {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.login-modal {
+    width: 30%;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.5);
+	transform: translate(0, 30%);
+    position: relative;
+	padding-bottom: 10px;
+	z-index: 9;
+}
+
+.wrapper:before {
+	content: ' ';
+    margin: 0;
+    padding: 0;
+    left: 0px;
+    top: 50px;
+	bottom: 0;
+	right: 0;
+    position: absolute;
+    background: url(/assets/scrum.jpg);
+}

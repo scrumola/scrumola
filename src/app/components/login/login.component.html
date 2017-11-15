@@ -1,9 +1,10 @@
-<div class="container">
-  
-  <div class="row">
-  <div class="col-sm-3">&nbsp;</div>
-  <div class="col-sm-6">
-      <div class="row">
+<div class="wrapper">
+  <div class="login-modal">
+
+    <div class="row">
+      <div class="col-sm-2">&nbsp;</div>
+      <div class="col-sm-8">
+        <div class="row">
           <div class="col-md-12">
             <h1>Welcome to Scrumola</h1>
             <form name="form" [formGroup]="form" (ngSubmit)="onLoginSubmit()">
@@ -13,23 +14,28 @@
               </div>
               <div class="form-group">
                 <label for="name">Game name</label>
-                <input type="text" class="form-control"id="gameName" formControlName="gameName"  placeholder="Enter game name">
+                <input type="text" class="form-control" id="gameName" formControlName="gameName" placeholder="Enter game name">
                 <p class="help-block">For example: 'Fabric project'</p>
               </div>
               <div class="form-group">
-                  <label for="description">Player</label>
-                  <select [ngModel]="player" class="form-control" formControlName="playerType">
+                <label for="description">Player</label>
+                <select [ngModel]="player" class="form-control" formControlName="playerType">
                     <option value="0" id="op01">Join as a creator</option>
                     <option value="1" id="op02">Join as a player</option>
                   </select>
               </div>
               <div class="form-group">
-                  <label for="description">Game description (optional)</label>
-                  <textarea class="form-control" rows="3" id="description" placeholder="Enter game description"></textarea>
+                <label for="description">Game description (optional)</label>
+                <textarea class="form-control" rows="3" id="description" placeholder="Enter game description"></textarea>
               </div>
-              <div class="col-md-12 text-center"> 
-                  <button id="create" type="submit" class="btn btn-success" [disabled]="!form.valid" >Start game</button> 
+              <div class="col-md-12 text-center">
+                <button id="create" type="submit" class="btn btn-success" [disabled]="!form.valid">Start game</button>
               </div>
             </form>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cover"></div>
